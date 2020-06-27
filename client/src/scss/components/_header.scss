@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.header {
+  --header-svg-height: 156px;
+  height: var(--header-svg-height);
+
+  background-color: var(--clr-primary);
+  background-image: url('/assets/images/bg-header-mobile.svg');
+}

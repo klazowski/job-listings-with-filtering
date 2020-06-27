@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+* {
+  /**
+   * Colours
+   */
+  --clr-primary: hsl(180, 29%, 50%);
+
+  --clr-card-background: #fff;
+
+  --clr-background: hsl(180, 52%, 96%);
+  //- Light Grayish Cyan (Filter Tablets)
+  --clr-light: hsl(180, 31%, 95%);
+  //- Dark Grayish Cyan
+  --clr-medium: hsl(180, 8%, 52%);
+  //- Very Dark Grayish Cyan
+  --clr-dark: hsl(180, 14%, 20%);
+
+  /**
+   * Typography
+   */
+  @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
+  --fs: 15px;
+  --fs-header: 12px;
+  --fs-title: 15px;
+  --ff: 'Spartan', sans-serif;
+  --fw-regular: 500;
+  --fw-bold: 700;
+
+  /**
+   * Other
+   */
+  --border-radius: 0.35em;
+}
+
+.body {
+  font-family: var(--ff);
+  font-size: var(--fs);
+  font-weight: var(--fw-regular);
+}

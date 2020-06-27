@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+.job-offer {
+  position: relative;
+  margin-top: 2.5em; // 1em + 1/2 company logo
+  padding: 1em;
+  padding-top: 2em;
+
+  border-left: var(--border-radius) solid transparent;
+
+  &--new {
+    border-left: var(--border-radius) solid var(--clr-primary);
+  }
+}
+
+.company-logo {
+  position: absolute;
+  top: 0;
+  width: auto;
+  height: 3em;
+  transform: translateY(-50%);
+}
+
+.job-card {
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+
+    font-size: var(--fs-header);
+    font-weight: var(--fw-bold);
+  }
+
+  &__position {
+    margin-top: 1em;
+  }
+
+  &__details {
+    position: relative;
+    display: flex;
+
+    margin-top: 1em;
+
+    font-size: var(--fs-header);
+  }
+
+  &__detail:not(:first-child) {
+    position: relative;
+    margin-left: 2em;
+  }
+  &__detail:not(:first-child)::before {
+    position: absolute;
+    content: '';
+    top: 0.35em; // because font...
+    left: -1em; // half of left margin
+    border: 2px solid var(--clr-primary);
+    border-radius: 100vw;
+  }
+}
+
+.notification {
+  margin-left: 1.25em;
+  border-radius: 100vw;
+  padding: 0.5em 0.5em 0.25em 0.5em; // Bottom padding must be smaller or this forn will not center vertically.
+  color: #fff;
+  background-color: var(--clr-primary);
+
+  text-transform: uppercase;
+
+  &--featured {
+    background-color: var(--clr-dark);
+  }
+}
+
+.job-position {
+  text-decoration: none;
+  color: var(--clr-dark);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-bold);
+}
+
+.available-filters {
+  position: relative;
+  padding: 0.75em 0; //equals to .filter__list --margin
+  margin-left: -0.75em;
+  margin-top: 1em;
+}
+
+.available-filters::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0.75em;
+  right: 0.75em;
+  border-bottom: 1px solid var(--clr-primary);
+}
+
+.btn-add-filter {
+  background-color: transparent;
+}
+
+@media (min-width: 750px) {
+  .job-offer {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 1em;
+  }
+
+  .company-logo {
+    position: relative;
+    transform: unset;
+    height: 6em;
+  }
+
+  .job-card {
+    margin-left: 1em;
+  }
+
+  .available-filters {
+    margin-left: 2em;
+    margin-top: 0;
+  }
+  .available-filters::before {
+    border: unset;
+  }
+}

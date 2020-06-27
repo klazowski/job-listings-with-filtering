@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.card {
+  background-color: var(--clr-card-background);
+  color: var(--clr-medium);
+  border-radius: var(--border-radius);
+  box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.1);
+}

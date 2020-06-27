@@ -1,0 +1,29 @@
+{
+  "name": "job-listings-with-filtering",
+  "version": "1.0.0",
+  "description": "FrontendMentor.io challenge",
+  "main": "/server/dist/server.js",
+  "scripts": {
+    "start": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev-start": "concurrently \"npm run dev-start --prefix server\" \"npm run start --prefix client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm install --prefix server && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klazowski/JobListingsWithFiltering.git"
+  },
+  "keywords": [],
+  "author": "Krzysztof Łazowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klazowski/JobListingsWithFiltering/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}

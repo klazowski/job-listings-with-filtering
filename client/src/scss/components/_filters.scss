@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/** Layout */
+.selected-filters {
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-2em);
+  margin-bottom: -2em; // to make up for transform.
+  padding: 0.75em; //equals to .filter__list --margin
+
+  align-items: center;
+}
+
+.filters__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  --margin: 0.75em;
+}
+
+.filter {
+  display: flex;
+  margin: var(--margin);
+}
+
+.filter__name {
+  // Top padding is greater because Spartan fornt centers vertically related to small char and not Big char like any other proper font does.
+  padding: 0.75em 0.5em 0.5em 0.5em;
+}
+
+.btn-remove-filter {
+  // I should make it in better way. It is 1em + 2 x padding from filter__name
+  width: 2em;
+}
+
+.btn-clear-filters {
+  --margin: 1.25em;
+  margin-right: var(--margin);
+}
+
+/** Theme */
+
+.filter {
+  border-radius: var(--border-radius);
+  background-color: var(--clr-light);
+}
+
+.filter__name,
+.btn-clear-filters {
+  font-size: 0.85rem;
+  font-weight: var(--fw-bold);
+}
+
+.btn-remove-filter {
+  position: relative;
+  background-color: var(--clr-primary);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.btn-remove-filter::before,
+.btn-remove-filter::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  border-bottom: 3px solid var(--clr-light);
+}
+
+.btn-remove-filter::before {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.btn-remove-filter::after {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
