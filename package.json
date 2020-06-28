@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klazowski/JobListingsWithFiltering.git"
+    "url": "git+https://github.com/klazowski/job-listings-with-filtering.git"
   },
   "keywords": [],
   "author": "Krzysztof Łazowski",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/klazowski/JobListingsWithFiltering/issues"
+    "url": "https://github.com/klazowski/job-listings-with-filtering/issues"
   },
   "dependencies": {},
   "devDependencies": {
