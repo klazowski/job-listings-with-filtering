@@ -46,6 +46,11 @@
   background-color: var(--clr-light);
 }
 
+.filter:hover,
+.filter:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .filter__name,
 .btn-clear-filters {
   font-size: 0.85rem;
