@@ -21,7 +21,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "^5.2.0",
+    "eslint-plugin-react-hooks": "^4.0.4"
   },
   "engines": {
     "node": "12.x"
