@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
+import AppliedFilter from './AppliedFilter';
 
-class AppliedFilters extends Component {
+class AppliedFilters extends Component<{}, { appliedFilters: string[] }> {
+  state = {
+    appliedFilters: [`Frontend1`, `CSS`, `JavaScript`],
+  };
+
   render(): JSX.Element {
     return (
       <div className="selected-filters card">
         <ul className="filters__list">
-          <li className="filter">
-            <p className="filter__name">Frontend</p>
-            <button className="btn-remove-filter"></button>
-          </li>
-          <li className="filter">
-            <p className="filter__name">CSS</p>
-            <button className="btn-remove-filter"></button>
-          </li>
-          <li className="filter">
-            <p className="filter__name">JavaScript</p>
-            <button className="btn-remove-filter"></button>
-          </li>
+          {this.state.appliedFilters.map((filterName: string) => (
+            <AppliedFilter filterName={filterName} />
+          ))}
         </ul>
         <div className="center">
           <button className="btn-clear-filters">Clear</button>
