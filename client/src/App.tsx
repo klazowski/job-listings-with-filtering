@@ -17,7 +17,6 @@ class App extends Component<{}, AppState> {
   }
 
   componentDidMount() {
-    const SERVER_PORT = process.env.PORT || 5000;
     fetch('/api/job-offers')
       .then((response) => response.json())
       .then((result) => {
