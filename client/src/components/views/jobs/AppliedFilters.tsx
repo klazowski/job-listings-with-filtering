@@ -1,13 +1,11 @@
 import React from 'react';
 import AppliedFilter from './AppliedFilter';
 
-const AppliedFilters = (props: {}): JSX.Element => {
-  const appliedFilters = [`Frontend1`, `CSS`, `JavaScript`];
-
+const AppliedFilters = (props: { appliedFilters: string[] }): JSX.Element => {
   return (
     <div className="selected-filters card">
       <ul className="filters__list">
-        {appliedFilters.map((filterName: string) => (
+        {props.appliedFilters.map((filterName: string) => (
           <AppliedFilter filterName={filterName} />
         ))}
       </ul>

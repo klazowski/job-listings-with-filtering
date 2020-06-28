@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/style.min.css';
 
 import JobOffersList from './components/views/jobs/JobOffersList';
@@ -8,36 +8,34 @@ type AppState = {
   offers: Offer[];
 };
 
-class App extends Component<{}, AppState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      offers: [],
-    };
-  }
+const App = (props: {}, AppState: {}): JSX.Element => {
+  const [offers, setOffers] = useState<Offer[]>([]);
+  const [appliedFilters, setAppliedFilters] = useState<string[]>([
+    `Frontend1`,
+    `CSS`,
+    `JavaScript`,
+  ]);
 
-  componentDidMount() {
+  useEffect(() => {
     fetch('/api/job-offers')
       .then((response) => response.json())
       .then((result) => {
-        this.setState({ offers: result as Offer[] });
+        setOffers(result as Offer[]);
       });
-  }
+  });
 
-  render(): JSX.Element {
-    return (
-      <div className="body">
-        <header className="header"></header>
-        <main className="main">
-          <div className="container">
-            <AppliedFilters />
-            <JobOffersList offers={this.state.offers} />
-          </div>
-        </main>
-        <footer className="footer"></footer>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="body">
+      <header className="header"></header>
+      <main className="main">
+        <div className="container">
+          <AppliedFilters appliedFilters={appliedFilters} />
+          <JobOffersList offers={offers} />
+        </div>
+      </main>
+      <footer className="footer"></footer>
+    </div>
+  );
+};
 
 export default App;
