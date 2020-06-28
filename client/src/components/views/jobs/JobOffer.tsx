@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FilterButton from './FilterButton';
 
 class JobOffer extends Component<{ offer: Offer; listKey: number }> {
   render(): JSX.Element {
@@ -65,10 +66,8 @@ class JobOffer extends Component<{ offer: Offer; listKey: number }> {
           {this.props.offer.languages
             ? this.props.offer.languages.map((language, idx) => {
                 return (
-                  <li className="filter" key={idx}>
-                    <button className="btn-add-filter filter__name">
-                      {language}
-                    </button>
+                  <li className="filter" key={`language_${idx}`}>
+                    <FilterButton filterName={language} />
                   </li>
                 );
               })
@@ -76,10 +75,8 @@ class JobOffer extends Component<{ offer: Offer; listKey: number }> {
           {this.props.offer.tools
             ? this.props.offer.tools.map((tool, idx) => {
                 return (
-                  <li className="filter" key={idx}>
-                    <button className="btn-add-filter filter__name">
-                      {tool}
-                    </button>
+                  <li className="filter" key={`tool_${idx}`}>
+                    <FilterButton filterName={tool} />
                   </li>
                 );
               })
