@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/style.min.css';
 
 import JobOffersList from './components/views/jobs/JobOffersList';
-import SelectedFilters from './components/views/jobs/SelectedFilters';
+import AppliedFilters from './components/views/jobs/AppliedFilters';
 
 type AppState = {
   offers: Offer[];
@@ -31,7 +31,7 @@ class App extends Component<{}, AppState> {
         <header className="header"></header>
         <main className="main">
           <div className="container">
-            <SelectedFilters />
+            <AppliedFilters />
             <JobOffersList offers={this.state.offers} />
           </div>
         </main>

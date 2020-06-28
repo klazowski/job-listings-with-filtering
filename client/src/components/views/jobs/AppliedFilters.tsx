@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SelectedFilters extends Component {
+class AppliedFilters extends Component {
   render(): JSX.Element {
     return (
       <div className="selected-filters card">
@@ -26,4 +26,4 @@ class SelectedFilters extends Component {
   }
 }
 
-export default SelectedFilters;
+export default AppliedFilters;
