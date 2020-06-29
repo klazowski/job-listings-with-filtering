@@ -4,13 +4,9 @@ import './css/style.min.css';
 import JobOffersList from './components/views/jobs/JobOffersList';
 import AppliedFilters from './components/views/jobs/AppliedFilters';
 
-type AppState = {
-  offers: Offer[];
-};
-
 const App = (props: {}, AppState: {}): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>([]);
-  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+  const [appliedFilters, setAppliedFilters] = useState<Filter[]>([]);
 
   useEffect(() => {
     fetch('/api/job-offers')
@@ -18,20 +14,43 @@ const App = (props: {}, AppState: {}): JSX.Element => {
       .then((result) => {
         setOffers(result as Offer[]);
       });
-  });
+  }, []);
 
-  const addFilterHandler = (filterName: string): void => {
-    if (!appliedFilters.includes(filterName))
-      setAppliedFilters([...appliedFilters, filterName]);
+  const addFilterHandler = (filter: Filter): void => {
+    if (!appliedFilters.includes(filter))
+      setAppliedFilters([...appliedFilters, filter]);
+    //updateOffersList();
   };
 
-  const removeFiltersHandler = (filters: string[]): void => {
+  const removeFiltersHandler = (filters: Filter[]): void => {
     setAppliedFilters(
-      appliedFilters.filter((filterName) => {
-        return !filters.includes(filterName);
+      appliedFilters.filter((filter) => {
+        return !filters.includes(filter);
       })
     );
   };
+
+  const filteredOffers = offers.filter((offer) => {
+    if (appliedFilters.length === 0) return true;
+
+    return appliedFilters.every((filter) => {
+      switch (filter.type) {
+        case 'role':
+          if (offer.role !== filter.name) return false;
+          break;
+        case 'level':
+          if (offer.level !== filter.name) return false;
+          break;
+        case 'language':
+          if (!offer.languages?.includes(filter.name)) return false;
+          break;
+        case 'tool':
+          if (!offer.tools?.includes(filter.name)) return false;
+          break;
+      }
+      return true;
+    });
+  });
 
   return (
     <div className="body">
@@ -44,7 +63,7 @@ const App = (props: {}, AppState: {}): JSX.Element => {
               removeFilters={removeFiltersHandler}
             />
           ) : null}
-          <JobOffersList offers={offers} addFilter={addFilterHandler} />
+          <JobOffersList offers={filteredOffers} addFilter={addFilterHandler} />
         </div>
       </main>
       <footer className="footer"></footer>

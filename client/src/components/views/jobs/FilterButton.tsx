@@ -1,17 +1,17 @@
 import React from 'react';
 
 const FilterButton = (props: {
-  filterName: string;
-  addFilter: (filterName: string) => void;
+  filter: Filter;
+  addFilter: (filter: Filter) => void;
 }): JSX.Element => {
   const clickHandler = (): void => {
-    props.addFilter(props.filterName);
+    props.addFilter(props.filter);
   };
 
   return (
     <li className="filter">
       <button className="btn-add-filter filter__name" onClick={clickHandler}>
-        {props.filterName}
+        {props.filter.name}
       </button>
     </li>
   );

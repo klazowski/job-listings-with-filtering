@@ -3,7 +3,7 @@ import FilterButton from './FilterButton';
 
 const JobOffer = (props: {
   offer: Offer;
-  addFilter: (filterName: string) => void;
+  addFilter: (filter: Filter) => void;
 }): JSX.Element => {
   return (
     <li className={`job-offer ${props.offer.new ? 'job-offer--new' : ''} card`}>
@@ -51,12 +51,12 @@ const JobOffer = (props: {
         data-tools={props.offer.tools || ''}
       >
         <FilterButton
-          filterName={props.offer.role}
+          filter={{ type: 'role', name: props.offer.role }}
           key={`role`}
           addFilter={props.addFilter}
         />
         <FilterButton
-          filterName={props.offer.level}
+          filter={{ type: 'level', name: props.offer.level }}
           key={`level`}
           addFilter={props.addFilter}
         />
@@ -64,7 +64,7 @@ const JobOffer = (props: {
           ? props.offer.languages.map((language, idx) => {
               return (
                 <FilterButton
-                  filterName={language}
+                  filter={{ type: 'language', name: language }}
                   key={`language_${idx}`}
                   addFilter={props.addFilter}
                 />
@@ -75,7 +75,7 @@ const JobOffer = (props: {
           ? props.offer.tools.map((tool, idx) => {
               return (
                 <FilterButton
-                  filterName={tool}
+                  filter={{ type: 'tool', name: tool }}
                   key={`tool_${idx}`}
                   addFilter={props.addFilter}
                 />
