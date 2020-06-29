@@ -19,7 +19,6 @@ const App = (props: {}, AppState: {}): JSX.Element => {
   const addFilterHandler = (filter: Filter): void => {
     if (!appliedFilters.includes(filter))
       setAppliedFilters([...appliedFilters, filter]);
-    //updateOffersList();
   };
 
   const removeFiltersHandler = (filters: Filter[]): void => {
