@@ -10,11 +10,7 @@ type AppState = {
 
 const App = (props: {}, AppState: {}): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>([]);
-  const [appliedFilters, setAppliedFilters] = useState<string[]>([
-    `Frontend1`,
-    `CSS`,
-    `JavaScript`,
-  ]);
+  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
   useEffect(() => {
     fetch('/api/job-offers')
@@ -24,13 +20,31 @@ const App = (props: {}, AppState: {}): JSX.Element => {
       });
   });
 
+  const addFilterHandler = (filterName: string): void => {
+    if (!appliedFilters.includes(filterName))
+      setAppliedFilters([...appliedFilters, filterName]);
+  };
+
+  const removeFiltersHandler = (filters: string[]): void => {
+    setAppliedFilters(
+      appliedFilters.filter((filterName) => {
+        return !filters.includes(filterName);
+      })
+    );
+  };
+
   return (
     <div className="body">
       <header className="header"></header>
       <main className="main">
         <div className="container">
-          <AppliedFilters appliedFilters={appliedFilters} />
-          <JobOffersList offers={offers} />
+          {appliedFilters.length > 0 ? (
+            <AppliedFilters
+              appliedFilters={appliedFilters}
+              removeFilters={removeFiltersHandler}
+            />
+          ) : null}
+          <JobOffersList offers={offers} addFilter={addFilterHandler} />
         </div>
       </main>
       <footer className="footer"></footer>

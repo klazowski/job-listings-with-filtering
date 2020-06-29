@@ -1,10 +1,17 @@
 import React from 'react';
 
-const AppliedFilter = (props: { filterName: string }): JSX.Element => {
+const AppliedFilter = (props: {
+  filterName: string;
+  removeFilter: (filterName: string) => void;
+}): JSX.Element => {
+  const clickHandler = (): void => {
+    props.removeFilter(props.filterName);
+  };
+
   return (
-    <li className="filter" key={props.filterName}>
+    <li className="filter">
       <p className="filter__name">{props.filterName}</p>
-      <button className="btn-remove-filter"></button>
+      <button className="btn-remove-filter" onClick={clickHandler}></button>
     </li>
   );
 };

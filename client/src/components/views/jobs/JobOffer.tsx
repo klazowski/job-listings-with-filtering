@@ -1,12 +1,12 @@
 import React from 'react';
 import FilterButton from './FilterButton';
 
-const JobOffer = (props: { offer: Offer; listKey: number }): JSX.Element => {
+const JobOffer = (props: {
+  offer: Offer;
+  addFilter: (filterName: string) => void;
+}): JSX.Element => {
   return (
-    <li
-      key={props.listKey}
-      className={`job-offer ${props.offer.new ? 'job-offer--new' : ''} card`}
-    >
+    <li className={`job-offer ${props.offer.new ? 'job-offer--new' : ''} card`}>
       <div className="job-card__container">
         <img
           src={props.offer.logo}
@@ -50,31 +50,35 @@ const JobOffer = (props: { offer: Offer; listKey: number }): JSX.Element => {
         data-languages={props.offer.languages || ''}
         data-tools={props.offer.tools || ''}
       >
-        <li className="filter">
-          <button className="btn-add-filter filter__name">
-            {props.offer.role}
-          </button>
-        </li>
-        <li className="filter">
-          <button className="btn-add-filter filter__name">
-            {props.offer.level}
-          </button>
-        </li>
+        <FilterButton
+          filterName={props.offer.role}
+          key={`role`}
+          addFilter={props.addFilter}
+        />
+        <FilterButton
+          filterName={props.offer.level}
+          key={`level`}
+          addFilter={props.addFilter}
+        />
         {props.offer.languages
           ? props.offer.languages.map((language, idx) => {
               return (
-                <li className="filter" key={`language_${idx}`}>
-                  <FilterButton filterName={language} />
-                </li>
+                <FilterButton
+                  filterName={language}
+                  key={`language_${idx}`}
+                  addFilter={props.addFilter}
+                />
               );
             })
           : null}
         {props.offer.tools
           ? props.offer.tools.map((tool, idx) => {
               return (
-                <li className="filter" key={`tool_${idx}`}>
-                  <FilterButton filterName={tool} />
-                </li>
+                <FilterButton
+                  filterName={tool}
+                  key={`tool_${idx}`}
+                  addFilter={props.addFilter}
+                />
               );
             })
           : null}
