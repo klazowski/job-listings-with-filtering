@@ -1,12 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const FilterButton = (props: {
-  filter: Filter;
-  addFilter: (filter: Filter) => void;
-}): JSX.Element => {
+const FilterButton = (props: { filter: Filter; addFilter: (filter: Filter) => void }): JSX.Element => {
   const clickHandler = (): void => {
-    props.addFilter(props.filter);
-  };
+    props.addFilter(props.filter)
+  }
 
   return (
     <li className="filter">
@@ -14,7 +11,7 @@ const FilterButton = (props: {
         {props.filter.name}
       </button>
     </li>
-  );
-};
+  )
+}
 
-export default FilterButton;
+export default FilterButton

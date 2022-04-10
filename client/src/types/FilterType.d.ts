@@ -1,1 +1,1 @@
-type FilterType = 'role' | 'level' | 'language' | 'tool';
+type FilterType = 'role' | 'level' | 'language' | 'tool'

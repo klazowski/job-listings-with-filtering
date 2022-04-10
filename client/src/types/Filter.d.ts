@@ -1,4 +1,4 @@
 type Filter = {
-  type: FilterType;
-  name: string;
-};
+  type: FilterType
+  name: string
+}

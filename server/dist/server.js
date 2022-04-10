@@ -7,11 +7,11 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = __importDefault(require("config"));
 const path_1 = __importDefault(require("path"));
-const app = express_1.default();
+const app = (0, express_1.default)();
 const db = process.env.MONGODB_URI || config_1.default.get('mongodbURI');
 app.use(express_1.default.json());
 mongoose_1.default
-    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(db)
     .then(() => {
     console.log('Mongo connected');
 })
