@@ -10,7 +10,7 @@
   "dependencies": {
     "config": "^3.3.7",
     "express": "^4.17.3",
-    "mongoose": "^6.11.3"
+    "mongoose": "^6.12.0"
   },
   "devDependencies": {
     "@types/config": "^0.0.41",
